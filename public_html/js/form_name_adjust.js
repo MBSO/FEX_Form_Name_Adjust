@@ -1,7 +1,7 @@
 /*
 FEXCO Campaign Recognition Library
 Version: 1.0
-Author: Philip Lacey
+Author: 
 Date: 2014-10-21
 Description:
 This library is a centralised JavaScript Library to be include on Forms that want to interpret the form name and perform actions based on it.
