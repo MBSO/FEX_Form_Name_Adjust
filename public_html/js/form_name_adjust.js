@@ -911,20 +911,23 @@ function fn_DateConvert(){
 	var arySplit		= [];
 	var aryDate 		= [];
 	var aryTime			= [];
+	var dteDateStart	= '';
 	arySplit			= strStart_Date.split(' ');
 	aryTime				= arySplit[1].split(':');
 	if(strStart_Date.indexOf('/') != -1){
 		aryDate			= arySplit[0].split('/');
+		dteDateStart 	= new Date(aryDate[2],(aryDate[1] - 1),aryDate[0], aryTime[0], aryTime[1], aryTime[2], 0);
 	}
 	else{
 		aryDate			= arySplit[0].split('-');
+		dteDateStart 	= new Date(aryDate[0],(aryDate[1] - 1),aryDate[2], aryTime[0], aryTime[1], aryTime[2], 0);
 	}
-	var dteDateStart 	= new Date(aryDate[2],(aryDate[1] - 1),aryDate[0], aryTime[0], aryTime[1], aryTime[2], 0);
+	
 	
 	
 	//alert(dteDateStart.getFullYear() + '/' + (dteDateStart.getMonth() +1) + '/' + dteDateStart.getDate());
 	//alert(dteDateNow.getFullYear() + '/' + (dteDateNow.getMonth() + 1) + '/' + dteDateNow.getDate());
-	
+							//JS Months start at 0
 	var StartDate		= (dteDateStart.getMonth() +1) + '/' + dteDateStart.getDate() + '/' + dteDateStart.getFullYear();
 	var NowDate			= (dteDateNow.getMonth() +1) + '/' + dteDateNow.getDate() + '/' + dteDateNow.getFullYear();
 	
@@ -932,8 +935,14 @@ function fn_DateConvert(){
 	var NowDate1		= new Date(NowDate);
 	
 	
+        /*
 	var timeDiff		= NowDate1 - StartDate1;
 	var diffDays 		= Math.ceil(timeDiff / (1000 * 3600 * 24)); 
+        */
+
+	var intDays		= 24*60*60*1000;
+	var diffDays	= Math.round(Math.abs((NowDate1.getTime() - StartDate1.getTime()) / (intDays)));
+	
 	
 	
 	
